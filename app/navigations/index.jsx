@@ -4,6 +4,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import { IconTab, Styles } from "./NavigatorOptions";
 const { Navigator, Screen } = createBottomTabNavigator();
+
 import {
   RestaurantScreenStack,
   myAccountScreenStack,
@@ -13,10 +14,11 @@ import {
 
 const Navigation = () => {
   return (
-    <NavigationContainer>
+    <NavigationContainer >
       <Navigator
         screenOptions={router => ({
           tabBarIcon: props => <IconTab router={router} {...props} />
+          
         })}
         tabBarOptions={{
           style: Styles.root,

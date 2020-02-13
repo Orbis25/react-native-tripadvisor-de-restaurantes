@@ -1,19 +1,23 @@
-import React from "react";
-import { View, Text } from "react-native";
-import { Avatar } from "react-native-elements";
+import React, { useState, useEffect } from "react";
+import * as firebase from "firebase";
+import Loading from "../../components/loading";
+import UserLogged from "../userLogged";
+import UserGuest from "../userGuest";
 
 const MyAccount = () => {
-  return (
-    <View>
-      <Avatar
-        rounded
-        source={{
-          uri: "https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg"
-        }}
-      />
-      <Text> Mi cuenta </Text>
-    </View>
-  );
+  const [Auth, setAuth] = useState(null);
+
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged(user => {
+      !user ? setAuth(false) : setAuth(true);
+    });
+  }, []);
+
+  if (Auth == null) {
+    return <Loading text="Cargando..." isVisible={true} />;
+  }
+
+  return Auth ? <UserLogged /> : <UserGuest />;
 };
 
 export default MyAccount;
