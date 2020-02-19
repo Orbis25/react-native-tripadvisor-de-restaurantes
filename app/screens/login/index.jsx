@@ -1,6 +1,8 @@
 import React from "react";
 import { View, StyleSheet, Text, ScrollView, Image } from "react-native";
 import { Divider, Button } from "react-native-elements";
+import LoginForm from "../../components/account/loginForm";
+import LoginFacebook from '../../components/account/loginFacebook'
 const Login = props => {
   return (
     <ScrollView>
@@ -10,12 +12,13 @@ const Login = props => {
         style={styles.logo}
       />
       <View style={styles.viewContainer}>
-        <Text>Login</Text>
+        <LoginForm />
+
         <GoToRegister router={props} />
       </View>
       <Divider style={styles.divider} />
       <View style={styles.viewContainer}>
-        <Text>Login Facebook</Text>
+        <LoginFacebook />
       </View>
     </ScrollView>
   );
