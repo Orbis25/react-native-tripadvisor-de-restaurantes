@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "Blank Template",
+    "name": "Tu Comida RD",
     "slug": "tu-comida-rd",
     "privacy": "public",
     "sdkVersion": "36.0.0",
@@ -28,7 +28,8 @@
     },
     "android": {
       "permissions": [
-        "CAMERA_ROLL"
+        "CAMERA_ROLL",
+        "LOCATION"
       ]
     }
   }

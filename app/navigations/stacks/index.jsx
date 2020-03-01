@@ -1,11 +1,12 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import restaurantsScreen from "../../screens/restaurants/index";
+import restaurantsScreen from "../../screens/restaurants/home/index";
 import myAccountScreen from "../../screens/myAccount";
 import searchScreen from "../../screens/search";
-import topRestaurantsScreen from "../../screens/topRestaurants";
+import topRestaurantsScreen from "../../screens/restaurants/topRestaurants";
 import LoginScreen from "../../screens/login";
 import RegisterScreen from "../../screens/register";
+import AddRestaurant from "../../screens/restaurants/addRestaurants";
 
 const cardBackGround = "#ffffff";
 const Stack = createStackNavigator();
@@ -19,6 +20,14 @@ export const RestaurantScreenStack = () => (
         cardStyle: { backgroundColor: cardBackGround }
       }}
       component={restaurantsScreen}
+    />
+    <Stack.Screen
+      name="AddRestaurants"
+      options={{
+        title: "Nuevo Restaurante",
+        cardStyle: { backgroundColor: cardBackGround }
+      }}
+      component={AddRestaurant}
     />
   </Stack.Navigator>
 );
