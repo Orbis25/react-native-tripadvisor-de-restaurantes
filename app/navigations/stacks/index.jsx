@@ -7,6 +7,8 @@ import topRestaurantsScreen from "../../screens/restaurants/topRestaurants";
 import LoginScreen from "../../screens/login";
 import RegisterScreen from "../../screens/register";
 import AddRestaurant from "../../screens/restaurants/addRestaurants";
+import Restaurant from "../../screens/restaurants/restaurant";
+import ReviewFormRestaurant from "../../screens/restaurants/reviewForm";
 
 const cardBackGround = "#ffffff";
 const Stack = createStackNavigator();
@@ -28,6 +30,22 @@ export const RestaurantScreenStack = () => (
         cardStyle: { backgroundColor: cardBackGround }
       }}
       component={AddRestaurant}
+    />
+    <Stack.Screen
+      name="Restaurant"
+      options={{
+        title: "Restaurante",
+        cardStyle: { backgroundColor: cardBackGround }
+      }}
+      component={Restaurant}
+    />
+    <Stack.Screen
+      name="AddReviewRestaurant"
+      options={{
+        title: "Nueva reseña",
+        cardStyle: { backgroundColor: cardBackGround }
+      }}
+      component={ReviewFormRestaurant}
     />
   </Stack.Navigator>
 );

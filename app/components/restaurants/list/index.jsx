@@ -4,18 +4,21 @@ import {
   View,
   Text,
   FlatList,
-  ActivityIndicator
+  ActivityIndicator,
+  TouchableOpacity
 } from "react-native";
 import { Card, Image, Icon, Rating } from "react-native-elements";
 import { colors } from "../../../utils/shared.json";
 import LottieAnimation from "../../shared/animation";
 import * as firebase from "firebase";
 const RestaurantList = props => {
-  const { restaurants, handlerLoadMore, isLoading } = props;
+  const { restaurants, handlerLoadMore, isLoading, navigate } = props;
   return restaurants.length > 0 ? (
     <FlatList
       data={restaurants}
-      renderItem={restaurant => <Cardlist restaurant={restaurant} />}
+      renderItem={restaurant => (
+        <Cardlist restaurant={restaurant} navigate={navigate} />
+      )}
       keyExtractor={(item, index) => index.toString()}
       onEndReached={handlerLoadMore}
       onEndReachedThreshold={0.1}
@@ -32,13 +35,14 @@ const RestaurantList = props => {
 };
 
 const Cardlist = props => {
+  const { restaurant, navigate } = props;
+
   const {
-    restaurant: {
-      item: {
-        restaurant: { name, address, description, quantityVoting, images }
-      }
+    item: {
+      restaurant: { name, address, description, rating, images, quantityVoting }
     }
-  } = props;
+  } = restaurant;
+
   const [imageServer, setImageServer] = useState(null);
 
   useEffect(() => {
@@ -57,26 +61,31 @@ const Cardlist = props => {
   };
 
   return (
-    <View style={styles.cardListRoot}>
-      <View>
-        <Image
-          source={{ uri: imageServer }}
-          style={styles.topImageCard}
-          PlaceholderContent={<ActivityIndicator size="small" color="#fff" />}
-        />
-      </View>
-      <View>
-        <Text style={styles.cardListText}>{name}</Text>
+    <TouchableOpacity onPress={() => navigate("Restaurant", restaurant.item)}>
+      <View style={styles.cardListRoot}>
+        <View>
+          <Image
+            source={{ uri: imageServer }}
+            style={styles.topImageCard}
+            PlaceholderContent={<ActivityIndicator size="small" color="#fff" />}
+          />
+        </View>
+        <View>
+          <Text style={styles.cardListText}>{name}</Text>
 
-        <View style={styles.viewContainerAddress}>
-          <Text style={styles.cardListTextAddress}>{address}</Text>
-        </View>
-        <Text style={styles.cardTextDescription}>{sliceText(description)}</Text>
-        <View style={styles.containerRating}>
-          <Rating imageSize={15} />
+          <View style={styles.viewContainerAddress}>
+            <Text style={styles.cardListTextAddress}>{address}</Text>
+          </View>
+          <Text style={styles.cardTextDescription}>
+            {sliceText(description)}
+          </Text>
+          <View style={styles.containerRating}>
+            <Rating readonly startingValue={rating}   imageSize={15} />
+            <Text style={styles.qytVoting}>({quantityVoting})</Text>
+          </View>
         </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
@@ -139,6 +148,9 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: "center",
     marginBottom: 10
+  },
+  qytVoting: {
+    marginLeft: 5
   }
 });
 

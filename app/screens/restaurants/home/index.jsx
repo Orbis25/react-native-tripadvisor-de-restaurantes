@@ -83,6 +83,7 @@ const Restaurants = props => {
         restaurants={restaurants}
         handlerLoadMore={handlerLoadMore}
         isLoading={isLoading}
+        navigate={navigate}
       />
       {user && (
         <AddRestaurantButton
