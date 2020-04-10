@@ -1,7 +1,7 @@
 import React from "react";
 import { Icon } from "react-native-elements";
 import { StyleSheet } from "react-native";
-export const IconTab = props => {
+export const IconTab = (props) => {
   const { route } = props.router;
   let iconName;
   let color = "#536DFE";
@@ -15,26 +15,23 @@ export const IconTab = props => {
     case "Top Restaurantes":
       iconName = "star";
       break;
+    case "Favoritos":
+      iconName = "heart";
+      break;
     default:
       iconName = "account-circle";
       break;
   }
 
-  return (
-    <Icon
-      name={iconName}
-      type="material-community"
-      color={color}
-    />
-  );
+  return <Icon name={iconName} type="material-community" color={color} />;
 };
 
 export const Styles = StyleSheet.create({
   root: {},
   labelTab: {
-    marginBottom: 5
+    marginBottom: 5,
   },
   icon: {
-    width: 0
-  }
+    width: 0,
+  },
 });

@@ -9,7 +9,7 @@ import RegisterScreen from "../../screens/register";
 import AddRestaurant from "../../screens/restaurants/addRestaurants";
 import Restaurant from "../../screens/restaurants/restaurant";
 import ReviewFormRestaurant from "../../screens/restaurants/reviewForm";
-
+import FavoriteScreen from "../../screens/favorite";
 const cardBackGround = "#ffffff";
 const Stack = createStackNavigator();
 
@@ -19,7 +19,7 @@ export const RestaurantScreenStack = () => (
       name="Restaurants"
       options={{
         title: "Restaurantes",
-        cardStyle: { backgroundColor: cardBackGround }
+        cardStyle: { backgroundColor: cardBackGround },
       }}
       component={restaurantsScreen}
     />
@@ -27,7 +27,7 @@ export const RestaurantScreenStack = () => (
       name="AddRestaurants"
       options={{
         title: "Nuevo Restaurante",
-        cardStyle: { backgroundColor: cardBackGround }
+        cardStyle: { backgroundColor: cardBackGround },
       }}
       component={AddRestaurant}
     />
@@ -35,7 +35,7 @@ export const RestaurantScreenStack = () => (
       name="Restaurant"
       options={{
         title: "Restaurante",
-        cardStyle: { backgroundColor: cardBackGround }
+        cardStyle: { backgroundColor: cardBackGround },
       }}
       component={Restaurant}
     />
@@ -43,7 +43,7 @@ export const RestaurantScreenStack = () => (
       name="AddReviewRestaurant"
       options={{
         title: "Nueva reseña",
-        cardStyle: { backgroundColor: cardBackGround }
+        cardStyle: { backgroundColor: cardBackGround },
       }}
       component={ReviewFormRestaurant}
     />
@@ -56,7 +56,7 @@ export const myAccountScreenStack = () => (
       name="myAccountScreen"
       options={{
         title: "MI Cuenta",
-        cardStyle: { backgroundColor: cardBackGround }
+        cardStyle: { backgroundColor: cardBackGround },
       }}
       component={myAccountScreen}
     />
@@ -64,7 +64,7 @@ export const myAccountScreenStack = () => (
       name="login"
       options={{
         title: "Login",
-        cardStyle: { backgroundColor: cardBackGround }
+        cardStyle: { backgroundColor: cardBackGround },
       }}
       component={LoginScreen}
     />
@@ -72,7 +72,7 @@ export const myAccountScreenStack = () => (
       name="register"
       options={{
         title: "Crear cuenta",
-        cardStyle: { backgroundColor: cardBackGround }
+        cardStyle: { backgroundColor: cardBackGround },
       }}
       component={RegisterScreen}
     />
@@ -85,7 +85,7 @@ export const searchScreenStack = () => (
       name="searchScreen"
       options={{
         title: "Busca tu restaurante",
-        cardStyle: { backgroundColor: cardBackGround }
+        cardStyle: { backgroundColor: cardBackGround },
       }}
       component={searchScreen}
     />
@@ -98,9 +98,22 @@ export const topRestaurantsScreenStack = () => (
       name="topRestaurantsScreen"
       options={{
         title: "Los mejores Restaurantes",
-        cardStyle: { backgroundColor: cardBackGround }
+        cardStyle: { backgroundColor: cardBackGround },
       }}
       component={topRestaurantsScreen}
+    />
+  </Stack.Navigator>
+);
+
+export const favoriteScreenStack = () => (
+  <Stack.Navigator>
+    <Stack.Screen
+      name="Favorites"
+      options={{
+        title: "Favoritos",
+        cardStyle: { backgroundColor: cardBackGround },
+      }}
+      component={FavoriteScreen}
     />
   </Stack.Navigator>
 );

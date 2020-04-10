@@ -10,7 +10,7 @@ const ReviewForm = props => {
   const {
     navigation,
     route: {
-      params: { idRestaurant }
+      params: { idRestaurant, setReviewReload }
     }
   } = props;
   const [rating, setRating] = useState(null);
@@ -40,8 +40,6 @@ const ReviewForm = props => {
         })
         .catch(() => {
           Toast.show("Intente de nuevo");
-        })
-        .finally(() => {
           setIsLoading(false);
         });
     }
@@ -61,14 +59,13 @@ const ReviewForm = props => {
           quantityVoting
         })
         .then(() => {
+          setReviewReload(true);
           navigation.goBack();
         })
         .catch(() => {
           Toast.show(
             "Ocurrio un error actualizando el restaurante intente de nuevo"
           );
-        })
-        .finally(() => {
           setIsLoading(false);
         });
     });

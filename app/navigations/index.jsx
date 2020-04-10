@@ -9,25 +9,26 @@ import {
   RestaurantScreenStack,
   myAccountScreenStack,
   searchScreenStack,
-  topRestaurantsScreenStack
+  topRestaurantsScreenStack,
+  favoriteScreenStack
 } from "./stacks/index";
 
 const Navigation = () => {
   return (
-    <NavigationContainer >
+    <NavigationContainer>
       <Navigator
-        screenOptions={router => ({
-          tabBarIcon: props => <IconTab router={router} {...props} />
-          
+        screenOptions={(router) => ({
+          tabBarIcon: (props) => <IconTab router={router} {...props} />,
         })}
         tabBarOptions={{
           style: Styles.root,
-          labelStyle: Styles.labelTab
+          labelStyle: Styles.labelTab,
         }}
         initialRouteName="Restaurantes"
       >
         <Screen name="Restaurantes" component={RestaurantScreenStack} />
         <Screen name="Top Restaurantes" component={topRestaurantsScreenStack} />
+        <Screen name="Favoritos" component={favoriteScreenStack} />
         <Screen name="Busqueda" component={searchScreenStack} />
         <Screen name="Cuenta" component={myAccountScreenStack} />
       </Navigator>
