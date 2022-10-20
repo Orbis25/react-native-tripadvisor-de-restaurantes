@@ -31,7 +31,7 @@
     "react-native-keyboard-aware-scroll-view": "^0.9.1",
     "react-native-maps": "0.26.1",
     "react-native-open-maps": "^0.3.5",
-    "react-native-reanimated": "~1.4.0",
+    "react-native-reanimated": "~2.10.0",
     "react-native-safe-area-context": "0.6.0",
     "react-native-safe-module": "^1.2.0",
     "react-native-safe-modules": "^1.0.0",
